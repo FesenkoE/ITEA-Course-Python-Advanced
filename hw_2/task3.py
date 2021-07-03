@@ -58,9 +58,3 @@ class Matrix:
             list_str += '\n'
 
         return list_str
-
-
-new_matrix = Matrix([[10, 10]])
-print(new_matrix.__sub__(Matrix([[1, 1]])))
-print(new_matrix.__truediv__(5))
-print(new_matrix.__str__())

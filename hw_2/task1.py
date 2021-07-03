@@ -34,9 +34,6 @@ class Car:
         """User-friendly выыод информации об объекте"""
         return f"Car {self.name} {self.color} color is moving with {self.speed}"
 
-    def __new__(cls, *args, **kwargs):
-        return super().__new__(cls)
-
 
 class TownCar(Car):
     available_speed = 60
