@@ -1,24 +1,23 @@
 # 1. Написать декоратор, который будет печатать на экран время работы функции.
-from datetime import datetime
 import time
 
 
-def func_executing(func):
+def main():
 
-    def inner(*args, **kwargs):
-        start_time = datetime.now()
-        print('Start time', start_time)
-        func(*args, **kwargs)
-        end_time = datetime.now()
-        print('End time', end_time)
-        print('Executing time', end_time - start_time)
+    def function_duration(func):
+        def inner():
+            start_time = time.time()
+            func()
+            end_time = time.time()
+            print(f'Time execution function is {end_time - start_time}')
+        return inner
 
-    return inner
+    @function_duration
+    def some_function():
+        print('Hello World')
+
+    some_function()
 
 
-@func_executing
-def say(name, surname):
-    print('Hello', name, surname)
-
-
-say('Vasil', 'Ivanov')
+if __name__ == '__main__':
+    main()
