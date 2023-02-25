@@ -1,17 +1,20 @@
-# Написать функцию для вычислений очередного числа Фибоначчи (можно через цикл, можно
-# через рекурсию).
+"""
+Написать функцию для вычислений очередного числа Фибоначчи
+(можно через цикл, можно через рекурсию).
+"""
 
 
 def main():
     def fib_number(n):
-        afp = 0
-        bfn = 1
-        i = 1
+        before_num = 0
+        after_num = 1
+        cnt = 1
         fib = 1
-        while i < n:
-            fib = afp + bfn
-            afp = bfn
-            bfn = fib
+
+        while cnt < n:
+            fib = before_num + after_num
+            before_num = after_num
+            after_num = fib
             i += 1
 
         return fib
