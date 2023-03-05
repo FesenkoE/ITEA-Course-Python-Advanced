@@ -9,29 +9,33 @@
 - метод, изменяющий статус заявки
 - метод, возвращающий id заявки
 """
+
 import uuid
 from datetime import datetime
 
 
-class Order:
-    def __init__(self, user_name, serial_number, unique_id=uuid.uuid1(), date_time=datetime.now(), status=True):
+class Application:
+    def __init__(self, user_name, device_number, status='active'):
+        self.__application_id = uuid.uuid4()
         self.user_name = user_name
-        self.__serial_number = serial_number
-        self.unique_id = unique_id
-        self.date_time = date_time
+        self.device_number = device_number
         self.status = status
+        self.date_created = datetime.now()
 
-    def set_status(self, status):
-        self.status = status
+    def active_status_time(self):
+        if self.status == 'active':
+            return datetime.now() - self.date_created
 
-    def get_id(self):
-        return self.unique_id
+        return None
 
-    def get_active_time(self):
-        if self.status:
-            return datetime.now() - self.date_time
+    def set_status_inactive(self):
+        self.status = 'inactive'
+
+    def show_application_id(self):
+        return self.__application_id
 
 
-order = Order('Vasya', 123)
-
-print(order.get_active_time())
+app1 = Application('Ben', '1')
+app2 = Application('John', '2')
+print(app1.show_application_id())
+print(app2.show_application_id())

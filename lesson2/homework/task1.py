@@ -11,37 +11,37 @@
 
 
 class Car:
-
-    def __init__(self, speed, color, name, is_police):
+    def __init__(self, speed, color, name, is_police=False):
         self.speed = speed
         self.color = color
         self.name = name
         self.is_police = is_police
 
     def go(self):
-        print(f"Car {self.name} went.")
+        print(f'The car {id(self)} has been moved')
 
     def stop(self):
-        print(f"Car {self.name} stopped.")
+        print(f'The car {id(self)} has been stopped')
 
-    def turn(self, side):
-        print(f"Car {self.name} turn {side}.")
+    def turn(self, direction):
+        print(f'The car {id(self)} turn {direction}')
 
     def show_speed(self):
-        print(f"Current speed {self.name} is {self.speed}")
+        return self.speed
 
     def __str__(self):
-        """User-friendly выыод информации об объекте"""
-        return f"Car {self.name} {self.color} color is moving with {self.speed}"
+        return f'Current car {id(self)}\nColor: {self.color}\nSpeed: {self.speed}'
 
 
 class TownCar(Car):
-    available_speed = 60
+    speed_limit = 60
 
     def show_speed(self):
-        if self.speed > self.__class__.available_speed:
-            print(f'Speed is more than available {self.__class__.available_speed}')
-        return self.__class__.available_speed
+        current_speed = super().show_speed()
+        if current_speed > self.__class__.speed_limit:
+            print('Over speed')
+
+        return current_speed
 
 
 class SportCar(Car):
@@ -49,18 +49,19 @@ class SportCar(Car):
 
 
 class WorkCar(Car):
-    available_speed = 40
+    speed_limit = 40
 
     def show_speed(self):
-        if self.speed > self.__class__.available_speed:
-            print(f'Speed is more than available {self.__class__.available_speed}')
-        return self.__class__.available_speed
+        current_speed = super().show_speed()
+        if current_speed > self.__class__.speed_limit:
+            print('Over speed')
+
+        return current_speed
 
 
 class PoliceCar(Car):
-    pass
+    def __init__(self, speed, color, name):
+        super().__init__(speed, color, name, True)
 
 
-town_car = WorkCar(70, 'Blue', 'Skoda', False)
-town_car.show_speed()
-print(town_car.__str__())
+print(PoliceCar(100, 'blue', 'Ford'))

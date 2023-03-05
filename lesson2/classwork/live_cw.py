@@ -38,10 +38,6 @@
 # my_func_3()
 
 
-
-
-
-
 # def my_test_func():
 #     print("Я тестовая функция")
 #
@@ -204,37 +200,48 @@
 # print(point.my_shiny_method())
 
 
+#
+# class Point2D:
+#     """Класс двумерной точки, которая ещё и следит за тем, сколько её экземпляров было создано!"""
+#     __point_2d_cnt = 0
+#
+#     def __init__(self, coord_x, coord_y):
+#         self.coord_x = coord_x  # это поле ЭКЗМПЛЯРА!
+#         self.coord_y = coord_y
+#
+#     def my_shiny_method(self):
+#         result = self.coord_x + self.coord_y
+#         print(Point2D.__point_2d_cnt)
+#         if result > 0:
+#             return result
+#         else:
+#             raise ValueError("Result is ZERO or BELOW!")
+#
+#     def show_x_coord(self):
+#         return self.coord_x
+#
+#     def __add__(self, point):
+#         x_coord = self.coord_x + point.coord_x
+#         y_coord = self.coord_y + point.coord_y
+#         return Point2D(x_coord, y_coord)
+#
+#     def __str__(self):
+#         return f"x: {self.coord_x} y: {self.coord_y}"
+#
+#
+# point_1 = Point2D(1, 2)
+# point_2 = Point2D(3, 4)
+# point_4 = point_1 + point_2 + point_2 + point_1
+# print(point_4)
+# print(Point2D.__point_2d_cnt)
 
-class Point2D:
-    """Класс двумерной точки, которая ещё и следит за тем, сколько её экземпляров было создано!"""
-    __point_2d_cnt = 0
 
-    def __init__(self, coord_x, coord_y):
-        self.coord_x = coord_x  # это поле ЭКЗМПЛЯРА!
-        self.coord_y = coord_y
-
-    def my_shiny_method(self):
-        result = self.coord_x + self.coord_y
-        print(Point2D.__point_2d_cnt)
-        if result > 0:
-            return result
-        else:
-            raise ValueError("Result is ZERO or BELOW!")
-
-    def show_x_coord(self):
-        return self.coord_x
-
-    def __add__(self, point):
-        x_coord = self.coord_x + point.coord_x
-        y_coord = self.coord_y + point.coord_y
-        return Point2D(x_coord, y_coord)
-
-    def __str__(self):
-        return f"x: {self.coord_x} y: {self.coord_y}"
+class Cup:
+    def __init__(self, color, weight):
+        self.color = color
+        self.weight = weight
 
 
-point_1 = Point2D(1, 2)
-point_2 = Point2D(3, 4)
-point_4 = point_1 + point_2 + point_2 + point_1
-print(point_4)
-print(Point2D.__point_2d_cnt)
+cup_1 = Cup('red', 12)
+cup_2 = Cup('green', 14)
+c = 1
